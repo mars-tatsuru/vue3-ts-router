@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { RouterLink } from 'vue-router';
+import { RouterLink, useRouter } from 'vue-router';
 import { inject, computed } from 'vue';
 import type { Member } from 'interfaces';
 
@@ -14,6 +14,12 @@ const member = computed((): Member => {
   return memberList.get(props.id) as Member
 })
 
+const router = useRouter()
+
+const routerPush = () => {
+  router.push('/')
+}
+
 </script>
 
 <template>
@@ -22,5 +28,6 @@ const member = computed((): Member => {
     <h2>会員情報</h2>
     <p>{{member.id}}</p>
   </section>
+  <button type="button" @click="routerPush">TOPへ戻る</button>
 </template>
 
